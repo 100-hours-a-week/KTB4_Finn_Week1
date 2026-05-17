@@ -140,7 +140,7 @@ public class Main {
                                 System.out.println("[ID]: "  + target.getId() + " [이름]: " + target.getName()+"은(는) 이미 작업 중이 아닙니다." );
                             }else{
                                 System.out.println(target.endWork());
-                                target.setWorking(true);
+                                target.setWorking(false);
                             }
                         }else {
                             System.out.println("해당 직원을 찾을 수 없습니다.");

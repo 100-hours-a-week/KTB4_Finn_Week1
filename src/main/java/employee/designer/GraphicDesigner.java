@@ -12,15 +12,8 @@ public class GraphicDesigner extends Designer{
 
     @Override
     public void showInfo() {
-        System.out.println("========================================");
-        System.out.println("       [그래픽 디자이너 정보]        ");
-        System.out.println("========================================");
-        System.out.printf(" • 사원 번호(ID) : %d%n", id);
-        System.out.printf(" • 성함 / 나이   : %s (%d세)%n", name, age);
-        System.out.printf(" • 이메일 주소   : %s%n", email);
-        System.out.printf(" • 급여     : %,.0f만원 %n", salary);
-        System.out.println("----------------------------------------");
-        System.out.printf(" • 메인 언어 : %s%n", mainDesignTool);
+        super.showInfo();
+        System.out.printf(" • 메인 그래픽 작업 종류 : %s%n", mainGraphicAssertType);
         System.out.println("========================================");
     }
 

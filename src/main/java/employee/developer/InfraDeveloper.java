@@ -12,15 +12,7 @@ public class InfraDeveloper extends Developer {
 
     @Override
     public void showInfo() {
-        System.out.println("========================================");
-        System.out.println("            [인프라개발자 정보]        ");
-        System.out.println("========================================");
-        System.out.printf(" • 사원 번호(ID) : %d%n", id);
-        System.out.printf(" • 성함 / 나이   : %s (%d세)%n", name, age);
-        System.out.printf(" • 이메일 주소   : %s%n", email);
-        System.out.printf(" • 급여     : %,.0f만원 %n", salary);
-        System.out.println("----------------------------------------");
-        System.out.printf(" • 메인 언어 : %s%n", mainLanguage);
+        super.showInfo();
         System.out.printf(" • 메인 클라우드 플랫폼  : %s%n", mainCloudPlatform);
         System.out.println("========================================");
     }

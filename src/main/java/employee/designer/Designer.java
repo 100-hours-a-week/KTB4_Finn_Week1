@@ -2,7 +2,7 @@ package employee.designer;
 
 import employee.Employee;
 
-public class Designer extends Employee {
+public abstract class Designer extends Employee {
     protected String mainDesignTool;
 
     public Designer(String name, int age, String email, String designTool) {
@@ -25,7 +25,6 @@ public class Designer extends Employee {
         System.out.printf(" • 급여     : %,.0f만원 %n", salary);
         System.out.println("----------------------------------------");
         System.out.printf(" • 메인 디자인 툴 : %s%n", mainDesignTool);
-        System.out.println("========================================");
     }
     @Override
     public String startWork() {
