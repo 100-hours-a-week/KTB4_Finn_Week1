@@ -32,4 +32,9 @@ public class EmployeeManager {
     public boolean isEmpty(){
         return employeeMap.isEmpty();
     }
+
+    public List<Employee> findNotWorking(){
+        return employeeMap.values().stream().filter(employee -> !employee.isWorking()).toList();
+    }
+
 }

@@ -1,19 +1,19 @@
 package employee.developer;
 
-public class AIEngineer extends Developer {
+public class AIDeveloper extends Developer {
 
-    protected String mainFramework;
+    protected String mainField;
 
-    public AIEngineer(String name, int age, String email, String language, String framework) {
+    public AIDeveloper(String name, int age, String email, String language, String field) {
         super(name, age, email, language);
+        this.mainField = field;
         salary += 300;
-        this.mainFramework = framework;
     }
 
     @Override
     public void showInfo() {
         System.out.println("========================================");
-        System.out.println("       [AI엔지니어 정보 소속]        ");
+        System.out.println("              [AI개발자 정보]        ");
         System.out.println("========================================");
         System.out.printf(" • 사원 번호(ID) : %d%n", id);
         System.out.printf(" • 성함 / 나이   : %s (%d세)%n", name, age);
@@ -21,12 +21,17 @@ public class AIEngineer extends Developer {
         System.out.printf(" • 급여     : %,.0f만원 %n", salary);
         System.out.println("----------------------------------------");
         System.out.printf(" • 메인 언어 : %s%n", mainLanguage);
-        System.out.printf(" • 메인 프레임워크  : %s%n", mainFramework);
+        System.out.printf(" • 메인 필드  : %s%n", mainField);
         System.out.println("========================================");
     }
 
     @Override
-    public void toWork() {
-        System.out.println("AI개발자가 AI 기반 서비스 게발을 합니다.");
+    public String startWork() {
+        return "AI개발자 [" + name + "]이(가) " + mainField + " 기반 AI 서비스 개발을 합니다.";
+    }
+
+    @Override
+    public String endWork() {
+        return "AI개발자 [" + name + "]이(가) " + mainField + " 기반 AI 서비스 게발을 마무리 합니다.";
     }
 }
