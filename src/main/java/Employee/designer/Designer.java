@@ -1,6 +1,7 @@
-package employee.designer;
+package Employee.designer;
 
-import employee.Employee;
+import Employee.Employee;
+import enumType.SalaryRule;
 
 public abstract class Designer extends Employee {
     protected String mainDesignTool;
@@ -8,17 +9,11 @@ public abstract class Designer extends Employee {
     public Designer(String name, int age, String email, String designTool) {
         super(name, age, email);
         this.mainDesignTool = designTool;
-        salary += 800;
-    }
-
-    public Designer() {
+        salary = SalaryRule.DESIGNER.calculateSalary(salary);
     }
 
     @Override
     public void showInfo() {
-        System.out.println("========================================");
-        System.out.println("              [디자이너 정보]        ");
-        System.out.println("========================================");
         System.out.printf(" • 사원 번호(ID) : %d%n", id);
         System.out.printf(" • 성함 / 나이   : %s (%d세)%n", name, age);
         System.out.printf(" • 이메일 주소   : %s%n", email);
@@ -28,11 +23,13 @@ public abstract class Designer extends Employee {
     }
     @Override
     public String startWork() {
+        isWorking = true;
         return "디자이너가 디자인을 합니다.";
     }
 
     @Override
     public String endWork() {
+        isWorking = false;
         return "디자이너가 디자인을 마무리 합니다.";
     }
 }

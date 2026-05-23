@@ -1,46 +1,43 @@
-import employee.Employee;
-import employee.EmployeeManager;
-import employee.designer.GraphicDesigner;
-import employee.designer.UIUXDesigner;
-import employee.developer.AIDeveloper;
-import employee.developer.FullStackDeveloper;
-import employee.developer.InfraDeveloper;
-
+import Employee.Employee;
+import Employee.EmployeeManager;
+import Employee.designer.GraphicDesigner;
+import Employee.designer.UIUXDesigner;
+import Employee.developer.AIDeveloper;
+import Employee.developer.FullStackDeveloper;
+import Employee.developer.InfraDeveloper;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args){
+
         Scanner sc = new Scanner(System.in);
+
         EmployeeManager manager = new EmployeeManager();
         initializeEmployees(manager);
 
-        while (true) { // 프로그램이 종료 선택 전까지 계속 반복
+        while (true) {
             showMainPage();
-            String input = sc.nextLine();
+            String index = sc.nextLine();
 
-            switch (input){
+            switch (index){
                 case "1":
-                    // [직원 등록]
                     addEmployee(sc, manager);
                     break;
                 case "2":
-                    // [직원 조회]
-                    findEmployee(manager, sc);
+                    findEmployee(sc, manager);
                     break;
                 case "3":
-                    // [직원 삭제]
                     deleteEmployee(sc, manager);
                     break;
                 case "4":
-                    // [작업 투입/해제]
                     manageWorkEmployee(sc, manager);
                     break;
                 case "5":
-                    // [종료]
                     System.out.println("프로그램을 종료합니다.");
-                    return; // while 루프 탈출
+                    sc.close();
+                    return;
                 default:
                     System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
                     break;
@@ -81,8 +78,8 @@ public class Main {
     private static void manageWorkEmployee(Scanner sc, EmployeeManager manager) {
 
         while(true){
-            List<Employee> notWorkingEmployees = manager.findAll().stream().toList().stream().filter(employee -> !employee.isWorking()).toList(); //manager내에 함수로 따로 만드는 것이 적절한지
-            List<Employee> workingEmployees = manager.findAll().stream().toList().stream().filter(employee -> employee.isWorking()).toList();
+            List<Employee> notWorkingEmployees = manager.findNotWorking();
+            List<Employee> workingEmployees = manager.findWorking();
 
             System.out.println("---------------------------------------------------------------");
             System.out.println("               1. 작업 할당 2. 작업 해제 3. 뒤로가기");
@@ -103,6 +100,7 @@ public class Main {
                             System.out.println("[ID] : " + employee.getId() + " | [이름] : " + employee.getName());
                         }
                         System.out.println("----------------------------------------------------");
+
                         System.out.print("작업에 할당할 직원의 ID를 입력하세요 : ");
                         long targetId = Long.parseLong(sc.nextLine());
                         Employee target = manager.findById(targetId);
@@ -112,7 +110,6 @@ public class Main {
                                 System.out.println("[ID]: "  + target.getId() + " [이름]: " + target.getName()+"은(는) 이미 작업 중 입니다." );
                             }else{
                                 System.out.println(target.startWork());
-                                target.setWorking(true);
                             }
                         }else {
                             System.out.println("해당 직원을 찾을 수 없습니다.");
@@ -135,12 +132,12 @@ public class Main {
                         long targetId = Long.parseLong(sc.nextLine());
 
                         Employee target = manager.findById(targetId);
+
                         if(manager.exists(targetId)){
                             if(!target.isWorking()){
                                 System.out.println("[ID]: "  + target.getId() + " [이름]: " + target.getName()+"은(는) 이미 작업 중이 아닙니다." );
                             }else{
                                 System.out.println(target.endWork());
-                                target.setWorking(false);
                             }
                         }else {
                             System.out.println("해당 직원을 찾을 수 없습니다.");
@@ -154,7 +151,7 @@ public class Main {
         }
     }
 
-    private static void findEmployee(EmployeeManager manager, Scanner sc) {
+    private static void findEmployee(Scanner sc, EmployeeManager manager) {
         while (true) {
             if(manager.isEmpty()){
                 System.out.println("등록된 직원이 없습니다.");
@@ -209,8 +206,7 @@ public class Main {
                         System.out.println("해당 ID의 직원을 찾을 수 없습니다.");
                     }
                 }
-            }
-            else{
+            }else{
                 System.out.println("직원이 없습니다.");
                 return;
             }
@@ -310,7 +306,6 @@ public class Main {
             }
         }
     }
-
 
     private static void initializeEmployees(EmployeeManager manager){
         manager.add(new FullStackDeveloper("Finn", 25, "finn1234@gmail.com", "java", "React", "Spring"));

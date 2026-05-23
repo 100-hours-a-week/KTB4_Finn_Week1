@@ -1,11 +1,13 @@
-package employee;
+package Employee;
+
+import enumType.SalaryRule;
 
 public class Employee {
     protected Long id;
     protected String name;
     protected int age;
     protected String email;
-    protected double salary = 3000;
+    protected double salary;
 
     protected boolean isWorking = false;
 
@@ -13,22 +15,21 @@ public class Employee {
         this.name = name;
         this.age = age;
         this.email = email;
-    }
-
-    public Employee() {
+        this.salary = SalaryRule.GENERAL.initSalary();
     }
 
     public void showInfo(){
         System.out.print("[직원] ID: " + id + " | 성함: " + name);
-    };
+    }
 
     public String startWork(){
+        isWorking = true;
         return "직원이 일을 합니다.";
     }
     public String endWork(){
+        isWorking = false;
         return "직원이 일을 마무리합니다.";
     }
-
 
     public String getName() {
         return name;
@@ -36,10 +37,6 @@ public class Employee {
 
     public boolean isWorking() {
         return isWorking;
-    }
-
-    public void setWorking(boolean working) {
-        isWorking = working;
     }
 
     public Long getId() {

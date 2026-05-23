@@ -1,4 +1,4 @@
-package employee;
+package Employee;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +35,10 @@ public class EmployeeManager {
 
     public List<Employee> findNotWorking(){
         return employeeMap.values().stream().filter(employee -> !employee.isWorking()).toList();
+    }
+
+    public List<Employee> findWorking(){
+        return employeeMap.values().stream().filter(Employee::isWorking).toList();
     }
 
 }
