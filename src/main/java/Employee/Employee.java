@@ -2,6 +2,8 @@ package Employee;
 
 import enumType.SalaryRule;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class Employee {
     protected Long id;
     protected String name;
@@ -9,7 +11,7 @@ public class Employee {
     protected String email;
     protected double salary;
 
-    protected boolean isWorking = false;
+    protected AtomicBoolean isWorking = new AtomicBoolean(false);
 
     public Employee(String name, int age, String email) {
         this.name = name;
@@ -22,13 +24,20 @@ public class Employee {
         System.out.print("[직원] ID: " + id + " | 성함: " + name);
     }
 
-    public String startWork(){
-        isWorking = true;
+    public String showStartWork(){
+        startWork();
         return "직원이 일을 합니다.";
     }
-    public String endWork(){
-        isWorking = false;
+    public String showEndWork(){
+        endWork();
         return "직원이 일을 마무리합니다.";
+    }
+
+    public void startWork(){
+        isWorking.set(true);
+    }
+    public void endWork(){
+        isWorking.set(false);
     }
 
     public String getName() {
@@ -36,7 +45,7 @@ public class Employee {
     }
 
     public boolean isWorking() {
-        return isWorking;
+        return isWorking.get();
     }
 
     public Long getId() {

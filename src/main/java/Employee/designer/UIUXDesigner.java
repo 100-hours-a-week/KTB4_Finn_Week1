@@ -25,14 +25,14 @@ public class UIUXDesigner extends Designer{
         System.out.println("========================================\n");
     }
     @Override
-    public String startWork() {
-        isWorking = true;
+    public String showStartWork() {
+        isWorking.set(true);
         return "UI/UX 디자이너[" + name + "]이(가) UI/UX를 디자인합니다";
     }
 
     @Override
-    public String endWork() {
-        isWorking = false;
+    public String showEndWork() {
+        isWorking.set(false);
         return "UI/UX 디자이너[" + name + "]이(가) UI/UX를 디자인을 마무리 합니다";
     }
 }

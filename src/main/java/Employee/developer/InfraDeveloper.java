@@ -25,14 +25,14 @@ public class InfraDeveloper extends Developer {
     }
 
     @Override
-    public String startWork() {
-        isWorking = true;
+    public String showStartWork() {
+        isWorking.set(true);
         return "인프라 개발자[" + name + "]이(가) " + mainCloudPlatform + "을(를) 사용해 서버 개발을 합니다.";
     }
 
     @Override
-    public String endWork() {
-        isWorking = false;
+    public String showEndWork() {
+        isWorking.set(false);
         return "인프라 개발자[" + name + "]이(가) " + mainCloudPlatform + "을(를) 사용해 서버 개발을 마무리 합니다.";
     }
 }

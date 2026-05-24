@@ -25,14 +25,14 @@ public class AIDeveloper extends Developer {
     }
 
     @Override
-    public String startWork() {
-        isWorking = true;
+    public String showStartWork() {
+        isWorking.set(true);
         return "AI개발자 [" + name + "]이(가) " + mainField + " 기반 AI 서비스 개발을 합니다.";
     }
 
     @Override
-    public String endWork() {
-        isWorking = false;
-        return "AI개발자 [" + name + "]이(가) " + mainField + " 기반 AI 서비스 게발을 마무리 합니다.";
+    public String showEndWork() {
+        isWorking.set(false);
+        return "AI개발자 [" + name + "]이(가) " + mainField + " 기반 AI 서비스 개발을 마무리 합니다.";
     }
 }

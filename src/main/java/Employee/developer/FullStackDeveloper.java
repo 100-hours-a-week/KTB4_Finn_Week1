@@ -28,13 +28,13 @@ public class FullStackDeveloper extends Developer {
     }
 
     @Override
-    public String startWork() {
-        isWorking = true;
-        return "풀스택 개발자 [" + name + "]이(가) " + mainFrontendFramework + "와 " + mainBackendFramework+ " 을(를) 사용해 백엔드와 프론트엔드 개발을 합니다.";
+    public String showStartWork() {
+        isWorking.set(true);
+        return "풀스택 개발자 [" + name + "]이(가) " + mainFrontendFramework + "와 " + mainBackendFramework+ " 을(를) 사용해 백엔드&프론트엔드 개발을 합니다.";
     }
     @Override
-    public String endWork() {
-        isWorking = false;
-        return "풀스택 개발자 [" + name + "]이(가) " + mainFrontendFramework + "와 " + mainBackendFramework+ " 을(를) 사용해 백엔드와 프론트엔드 개발을 마무리 합니다.";
+    public String showEndWork() {
+        isWorking.set(false);
+        return "풀스택 개발자 [" + name + "]이(가) " + mainFrontendFramework + "와 " + mainBackendFramework+ " 을(를) 사용한 백엔드&프론트엔드 개발을 마무리 합니다.";
     }
 }

@@ -22,14 +22,14 @@ public abstract class Designer extends Employee {
         System.out.printf(" • 메인 디자인 툴 : %s%n", mainDesignTool);
     }
     @Override
-    public String startWork() {
-        isWorking = true;
+    public String showStartWork() {
+        isWorking.set(true);
         return "디자이너가 디자인을 합니다.";
     }
 
     @Override
-    public String endWork() {
-        isWorking = false;
+    public String showEndWork() {
+        isWorking.set(false);
         return "디자이너가 디자인을 마무리 합니다.";
     }
 }

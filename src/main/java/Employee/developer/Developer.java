@@ -24,14 +24,14 @@ public abstract class Developer extends Employee {
     }
 
     @Override
-    public String startWork() {
-        isWorking = true;
+    public String showStartWork() {
+        isWorking.set(true);
         return "개발자가 일을 합니다.";
     }
 
     @Override
-    public String endWork() {
-        isWorking = false;
+    public String showEndWork() {
+        isWorking.set(false);
         return "개발자가 일을 마무리 합니다.";
     }
 }

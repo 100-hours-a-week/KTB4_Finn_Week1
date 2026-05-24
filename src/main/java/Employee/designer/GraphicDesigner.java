@@ -25,13 +25,13 @@ public class GraphicDesigner extends Designer{
     }
 
     @Override
-    public String startWork() {
-        isWorking = true;
+    public String showStartWork() {
+        isWorking.set(true);
         return "그래픽 디자이너[" + name + "]이(가) 그래픽 디자인을 합니다.";
     }
     @Override
-    public String endWork() {
-        isWorking = false;
+    public String showEndWork() {
+        isWorking.set(false);
         return "그래픽 디자이너[" + name + "]이(가) 그래픽 디자인을 마무리 합니다.";
     }
 }
